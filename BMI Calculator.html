@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Check your BMI</h1>
+    <p>Enter your weight and height below to check your BMI result</p>
+
+    <form action="">
+        <label for="weight">Put your weight in here (KG)</label><br /><br />
+        <input type="text" id="weight" /><br><br />
+
+        <label for="height">And your height here in (CM)</label><br /><br />
+        <input type="text" id="height" />
+    </form>
+
+    <button onclick="sum()">Calculate BMI</button>
+
+    <p id="result"></p>
+</body>
+
+</html>
+
+<script>
+    var weightkg = document.getElementById("weight");
+    var heightcm = document.getElementById("height");
+    var result = document.getElementById("result");
+
+    function sum() {
+    var weight = Number(weightkg.value);
+    var height = Number(heightcm.value) / 100;       //convert height cm to height meter
+    var BMI = (weight / (height * height)).toFixed(1);
+
+
+    if(BMI <= 18.4){
+        var person_res = "UnderWeight";
+    }else if(BMI >= 18.5 && BMI <= 24.9){
+        var person_res = "Normal Weight";
+    }else if(BMI >= 25 && BMI <= 29.9){
+        var person_res = "Overweight";
+    }else{
+        var person_res = "Obese";
+    }
+
+    result.innerText = "Your BMI is " +  BMI + " which means You are " + person_res;
+    }
+</script>
