@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 350px;
+            margin: 20px auto;
+            padding: 30px 20px;
+        }
+
+        .heads {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .box p {
+            text-align: center;
+        }
+
+        #min,
+        #max {
+            border: 1px solid #000;
+            padding: 15px 20px;
+            font-weight: 660;
+            width: 30px;
+            text-align: center;
+        }
+
+        #min {
+            background-color: red;
+        }
+
+        #max {
+            background-color: green;
+        }
+
+        p {
+            margin: 5px;
+        }
+
+        #cen_box {
+            margin-top: 10px;
+        }
+
+        #cen_box p {
+            text-align: center;
+        }
+
+        #cen_box #score {
+            margin: 10px 30px;
+            width: calc(100% - 60px);
+            padding: 20px 0;
+            text-align: center;
+            border: 1px solid black;
+            background-color: rgb(218, 218, 218);
+            font-size: 22px;
+            font-weight: 660;
+        }
+
+        #form {
+            width: calc(100% - 60px);
+            margin: 0 auto;
+        }
+
+        #form .box {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #form .box input {
+            padding: 15px 20px;
+            margin-bottom: 21px;
+            width: 76px;
+            border: 1px solid #000;
+        }
+
+        #form button {
+            width: 100%;
+            background-color: black;
+            color: #fff;
+            padding: 20px 0;
+            border: 1px solid #000;
+        }
+
+        div input:last-child {
+            margin: 0 auto;
+        }
+
+        input:nth-child(1),
+        input:nth-child(3),
+        input:nth-child(7),
+        input:nth-child(9) {
+            background-color: #668100;
+        }
+
+        input:nth-child(2),
+        input:nth-child(4),
+        input:nth-child(5),
+        input:nth-child(6),
+        input:nth-child(8) {
+            background-color: #f96000;
+        }
+
+        input:nth-child(10) {
+            background-color: #810065;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="heads">
+            <div class="box">
+                <div id="min">43</div>
+                <p>MIN</p>
+            </div>
+
+            <div class="box">
+                <div id="max">2019</div>
+                <p>MAX</p>
+            </div>
+        </div>
+
+        <div id="cen_box">
+            <p>SCORE</p>
+            <div id="score">#</div>
+
+        </div>
+
+        <div id="form">
+            <div class="box">
+                <input type="button" value="1" />
+                <input type="button" value="2" />
+                <input type="button" value="3" />
+                <input type="button" value="4" />
+                <input type="button" value="5" />
+                <input type="button" value="6" />
+                <input type="button" value="7" />
+                <input type="button" value="8" />
+                <input type="button" value="9" />
+                <input type="button" value="0" />
+            </div>
+            <button>ENTER</button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+    var bag = ""; 
+    var score = document.querySelector("#score");
+    var input = document.querySelectorAll("input");
+    for (let i = 0; i < input.length; i++) {
+        input[i].addEventListener("click", function () {   
+            bag += input[i].value;
+            score.innerText = bag;
+        })
+    }
+
+    var btn = document.querySelector("button");
+    var min = document.querySelector("#min");
+    var max = document.querySelector("#max");
+
+    btn.addEventListener("click", function check() {
+        bag = "";
+        if (Number(score.innerText) < Number(min.innerText)) {
+            min.innerText = score.innerText;
+            score.innerText = "#";
+        } else if (Number(score.innerText) > Number(max.innerText)) {
+            max.innerText = score.innerText;
+            score.innerText = "#";
+        } else {
+            score.innerText = "#";
+        }
+    })
+</script>
